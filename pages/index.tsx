@@ -17,12 +17,11 @@ const Home: NextPage = () => {
       connection.getBalance(key).then(balance => {
         setBalance(balance / Web3.LAMPORTS_PER_SOL)
       })
-      connection.getAccountInfo(key).then(data => {
-        setExecutable(data?.executable)
-      })
+      connection.getAccountInfo(key).then(data => setExecutable(data?.executable))
     } catch (error) {
       setAddress('')
       setBalance(0)
+      setExecutable(0)
       alert(error)
     }
   }
